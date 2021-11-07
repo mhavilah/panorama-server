@@ -1,8 +1,16 @@
 package com.mih.userposts.model;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
+import lombok.extern.jackson.Jacksonized;
 
-@Data
+/**
+ * A JSON POJO for parsing responses from the downstream Post API.
+ * https://projectlombok.org/features/experimental/Jacksonized
+ */
+@Jacksonized
+@Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Post {
 
     private Long userId;

@@ -1,10 +1,17 @@
 package com.mih.userposts.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Builder;
 import lombok.Data;
+import lombok.extern.jackson.Jacksonized;
 
 /**
- * Model user for parsing Users API JSON Payload
+ * A JSON POJO for parsing responses from the downstream User API.
+ * https://projectlombok.org/features/experimental/Jacksonized
  */
+@Jacksonized
+@Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class User {
     private Long id;
