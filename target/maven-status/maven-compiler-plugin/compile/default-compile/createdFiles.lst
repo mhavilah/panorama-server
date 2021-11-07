@@ -1,9 +1,0 @@
-com/mih/userposts/model/User.class
-com/mih/userposts/UserpostsApplication.class
-com/mih/userposts/service/UserPostServiceImpl.class
-com/mih/userposts/model/Post.class
-com/mih/userposts/service/UserPostService.class
-com/mih/userposts/api/UserPostEndpoint.class
-com/mih/userposts/model/UserPost$UserPostBuilder.class
-com/mih/userposts/model/UserPost.class
-com/mih/userposts/service/UserPostAssembler.class
