@@ -30,4 +30,8 @@ public class UserPost {
 
         return userPost;
     }
+
+    public static UserPost of(User user) {
+        return of(user.getId(), user.getName(), user.getUsername());
+    }
 }

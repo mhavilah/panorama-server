@@ -12,12 +12,12 @@ import java.util.List;
 public class UserPostServiceImpl implements UserPostService {
 
     @Autowired
-    private UserPostAssembler assembler;
+    private UserPostAssemblerImpl assembler;
 
     // @Cacheable ?
     public List<UserPost> getAll() {
         log.info("Getting all UserPosts");
-        return assembler.getAll();
+        return assembler.assembleAll();
     }
 
 //    public Collection<UserPost> getPage(int offset, int limit) {

@@ -23,8 +23,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     // TODO - move to config
-    private static final String POSTS_SERVICE_BASE_URL = "https://jsonplaceholder.typicode.com";
-    private static final String POSTS_SERVICE_URI = "/users";
+    private static final String USERS_SERVICE_BASE_URL = "https://jsonplaceholder.typicode.com";
+    private static final String USERS_SERVICE_URI = "/users";
     private static final int TIMEOUT = 8000;
 
     // @Cacheable ?
@@ -32,12 +32,12 @@ public class UserServiceImpl implements UserService {
     public List<User> getAll() {
         List<User> users = null;
 
-        log.info("Retrieving all users - {}{}", POSTS_SERVICE_BASE_URL, POSTS_SERVICE_URI);
+        log.info("Retrieving all users - {}{}", USERS_SERVICE_BASE_URL, USERS_SERVICE_URI);
 
         try {
-            users = WebClient.create(POSTS_SERVICE_BASE_URL)
+            users = WebClient.create(USERS_SERVICE_BASE_URL)
                     .get()
-                    .uri(POSTS_SERVICE_URI)
+                    .uri(USERS_SERVICE_URI)
                     .accept(MediaType.APPLICATION_JSON)
                     .acceptCharset(StandardCharsets.UTF_8)
                     .retrieve()
