@@ -13,7 +13,7 @@ The project assumes the following tooling:
 The client for this project is location at: [Panorama-Client@Github](https://github.com/mhavilah/panorama-client)
 
 ## Building
-The project can be build into an executable Jar archive via: 
+The project can be built into an executable Jar archive via: 
 ```Bash
 $ ./mvn clean package
 ```
@@ -33,7 +33,7 @@ $ ./mvn clean test
 ### Integration Tests
 By default, the slower Integration tests are excluded from the Maven Surefire based unit test run.
 
-Integration Tests start an embedded Tomcat Server via Spring Boot and issue API calls to its published endpoints.
+Integration Tests start an embedded Tomcat Server via Spring Boot, then start a HTTP test client to issue API calls to the published endpoints.
 
 ```Bash
 $ ./mvn verify -Pfailsafe
@@ -72,6 +72,11 @@ $ ./mvn verify -Pfailsafe
 [INFO] ------------------------------------------------------------------------
 ```
 
+**NB:**
+
+The integration tests invoke the downstream APIs via the Server process and will require an internet connection.
+
+A possible future enhancement would utilise a Wiremock API server to imitate the User API and Post API, and simulate errors such as downstream timeouts. 
 
 
 ## Running
@@ -100,7 +105,7 @@ $ mvn spring-boot:run
 2021-11-07 16:18:55.423  INFO 30049 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
 2021-11-07 16:18:55.435  INFO 30049 --- [           main] com.mih.userposts.UserpostsApplication   : Started UserpostsApplication in 6.493 seconds (JVM running for 6.781)
 ```
-The embedded Tomcat server will start on port 8080 and has the endpoint at:
+The embedded Tomcat server will start on port 8080 and has an endpoint at:
 **/api/usersAndPosts**:
 
 ```Bash
@@ -108,7 +113,7 @@ $ ./mvn spring-boot:run&
 ...
 $ curl localhost:8080/api/usersAndPosts 
 ```
-with a response similar to:
+The response will be similar to:
 ```json
 [{"id":1,"name":"Leanne Graham","username":"Bret",
   "posts":[{"userId":1,"id":1,"title":"sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -117,11 +122,11 @@ with a response similar to:
 ```
 **NB:**
 
-The additional fields from the downstream user API (email, address etc) have been intentionally omitted.
+The additional fields from the downstream user API (email, address etc) have been intentionally omitted from the usersAndPosts API.
 
 
 ## System Info
-The Spring Boot Actuator API has been installed under: [http://localhost:8080/api/actuator]
+The Spring Boot Actuator API has been installed under: [Localhost Springboot Actuator](http://localhost:8080/api/actuator)
 
 Sample endpoints:
 ### Health
