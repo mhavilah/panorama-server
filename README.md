@@ -16,6 +16,9 @@ $ ./mvnw clean package
 
 
 ## Testing
+
+### Unit Tests
+
 The **unit tests** will be run as part of the above build process.
 Alternatively, they can be invoked explicitly via:
 
