@@ -8,6 +8,10 @@ The project assumes the following tooling:
 - Java 11 or newer
 - Maven 3.x
 
+## Client Application Project
+
+The client for this project is location at: [Panorama-Client@Github](https://github.com/mhavilah/panorama-client)
+
 ## Building
 The project can be build into an executable Jar archive via: 
 ```Bash
