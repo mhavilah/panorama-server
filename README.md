@@ -11,7 +11,7 @@ The project assumes the following tooling:
 ## Building
 The project can be build into an executable Jar archive via: 
 ```Bash
-$ ./mvnw clean package
+$ ./mvn clean package
 ```
 
 
@@ -23,7 +23,7 @@ The **unit tests** will be run as part of the above build process.
 Alternatively, they can be invoked explicitly via:
 
 ```Bash
-$ ./mvnw clean test
+$ ./mvn clean test
 ```
 
 ### Integration Tests
@@ -100,7 +100,7 @@ The embedded Tomcat server will start on port 8080 and has the endpoint at:
 **/api/usersAndPosts**:
 
 ```Bash
-$ ./mvnw spring-boot:run&
+$ ./mvn spring-boot:run&
 ...
 $ curl localhost:8080/api/usersAndPosts 
 ```
