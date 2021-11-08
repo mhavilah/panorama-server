@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.time.Duration.ofMillis;
 
 /**
  * Retrieve data from the downstream Post service.
@@ -28,9 +29,9 @@ public class PostServiceImpl implements PostService {
     private static final int TIMEOUT = 8000;
 
     // @Cacheable ?
-    @Timed(value = "post.api", longTask = true, description = "Post API get All Posts", histogram = true, percentiles = {0.90, 0.95, 0.9999})
+    @Timed(value = "post.api", description = "Post API get All Posts", histogram = true, percentiles = {0.90, 0.95, 0.9999})
     public List<Post> getAll() {
-        List<Post> posts = null;
+        List<Post> posts;
 
         log.info("Retrieving all posts - {}{}", POSTS_SERVICE_BASE_URL, POSTS_SERVICE_URI);
 
@@ -42,7 +43,7 @@ public class PostServiceImpl implements PostService {
                     .acceptCharset(StandardCharsets.UTF_8)
                     .retrieve()
                     .toEntityList(Post.class)
-                    .block(Duration.ofMillis(TIMEOUT))
+                    .block(ofMillis(TIMEOUT))
                     .getBody();
 
             log.info("Successfully retrieved: {} posts", posts.size());

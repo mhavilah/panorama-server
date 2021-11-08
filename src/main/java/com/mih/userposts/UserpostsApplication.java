@@ -10,6 +10,11 @@ import static com.mih.userposts.api.UserPostEndpoint.USERS_AND_POSTS_ENDPOINT_UR
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.HEAD;
 
+/**
+ * Main entrypoint to the Users and Posts microservice.
+ *
+ * This will start a Spring Boot app running on Tomcat on localhost:8080.
+ */
 @SpringBootApplication
 public class UserpostsApplication {
 

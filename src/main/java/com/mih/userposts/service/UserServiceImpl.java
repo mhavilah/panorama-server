@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.time.Duration.ofMillis;
 
 /**
  * Retrieve data from the downstream User service.
@@ -28,9 +29,9 @@ public class UserServiceImpl implements UserService {
     private static final int TIMEOUT = 8000;
 
     // @Cacheable ?
-    @Timed(value = "user.api", longTask = true, description = "User API get All Users", histogram = true, percentiles = {0.90, 0.95, 0.9999})
+    @Timed(value = "user.api", description = "User API get All Users", histogram = true, percentiles = {0.90, 0.95, 0.9999})
     public List<User> getAll() {
-        List<User> users = null;
+        List<User> users;
 
         log.info("Retrieving all users - {}{}", USERS_SERVICE_BASE_URL, USERS_SERVICE_URI);
 
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
                     .acceptCharset(StandardCharsets.UTF_8)
                     .retrieve()
                     .toEntityList(User.class)
-                    .block(Duration.ofMillis(TIMEOUT))
+                    .block(ofMillis(TIMEOUT))
                     .getBody();
 
             log.info("Successfully retrieved: {} users", users.size());

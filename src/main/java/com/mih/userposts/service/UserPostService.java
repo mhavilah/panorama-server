@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UserPostService {
     public List<UserPost> getAll();
+
+    public List<UserPost> getPage(Long offset, Long limit);
 }
