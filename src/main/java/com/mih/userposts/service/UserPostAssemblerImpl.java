@@ -14,6 +14,14 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 
+/**
+ * User Post Assmebler.
+ * This utility performs an in-memory join of posts and users.
+ * <p>
+ * The User instances are iterated/"folded" over,
+ * converted into UserPost instances and
+ * "reduced" with their related Posts attached.
+ */
 @Component
 public class UserPostAssemblerImpl implements UserPostAssembler {
 
@@ -24,7 +32,6 @@ public class UserPostAssemblerImpl implements UserPostAssembler {
     private PostService postService;
 
     public List<UserPost> assembleAll() {
-        // join
         List<User> users = userService.getAll();
         List<Post> posts = postService.getAll();
 
@@ -40,7 +47,9 @@ public class UserPostAssemblerImpl implements UserPostAssembler {
                     userPosts.add(userPost);
 
                     return userPosts;
-                }, (l1, l2) -> Stream.of(l1, l2)
+                },
+                // Parallel Combiner - merge two lists
+                (l1, l2) -> Stream.of(l1, l2)
                         .flatMap(Collection::stream)
                         .collect(toCollection(ArrayList::new)));
 
