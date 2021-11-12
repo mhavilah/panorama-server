@@ -15,7 +15,7 @@ import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 
 /**
- * User Post Assmebler.
+ * User Post Assembler.
  * This utility performs an in-memory join of posts and users.
  * <p>
  * The User instances are iterated/"folded" over,
