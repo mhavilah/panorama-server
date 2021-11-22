@@ -10,7 +10,7 @@ The project assumes the following tooling:
 
 ## Client Application Project
 
-The client for this project is location at: [Panorama-Client@Github](https://github.com/mhavilah/panorama-client)
+The client for this project is located at: [Panorama-Client@Github](https://github.com/mhavilah/panorama-client)
 
 ## Building
 The project can be built into an executable Jar archive via: 
