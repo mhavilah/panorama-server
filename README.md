@@ -15,7 +15,7 @@ The client for this project is located at: [Panorama-Client@Github](https://gith
 ## Building
 The project can be built into an executable Jar archive via: 
 ```Bash
-$ ./mvn clean package
+$ ./mvnw clean package
 ```
 
 
@@ -27,7 +27,7 @@ The **unit tests** will be run as part of the above build process.
 Alternatively, they can be invoked explicitly via:
 
 ```Bash
-$ ./mvn clean test
+$ ./mvnw clean test
 ```
 
 ### Integration Tests
@@ -36,7 +36,7 @@ By default, the slower Integration tests are excluded from the Maven Surefire ba
 Integration Tests start an embedded Tomcat Server via Spring Boot, then start a HTTP test client to issue API calls to the published endpoints.
 
 ```Bash
-$ ./mvn verify -Pfailsafe
+$ ./mvnw verify -Pfailsafe
 ```
 
 ```
@@ -82,7 +82,7 @@ A possible future enhancement would utilise a Wiremock API server to imitate the
 ## Running
 The server can be started via the command:
 ```Bash
-$ mvn spring-boot:run
+$ ./mvnw spring-boot:run
 ```
 ```
 [INFO] Scanning for projects...
@@ -109,7 +109,8 @@ The embedded Tomcat server will start on port 8080 and has an endpoint at:
 **/api/usersAndPosts**:
 
 ```Bash
-$ ./mvn spring-boot:run&
+$ ./mvnw spring-boot:run&
+
 ...
 $ curl localhost:8080/api/usersAndPosts 
 ```
